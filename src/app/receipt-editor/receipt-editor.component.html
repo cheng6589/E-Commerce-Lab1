@@ -1,0 +1,78 @@
+
+<div class="container">
+
+  Preview Data here
+  <pre>{{order |json}}</pre>
+  <pre>{{formDate |json}}</pre>
+  Preview Data end
+
+  <hr />
+  
+  <div class="row">
+    <!-- Edit date -->
+    <div class="col-md-1">
+      <label class="inline-block">Create Date</label>
+    </div>
+    <div class="col-md-11">
+      <input type="date" [(ngModel)]="formDate" class="form-control" />
+    </div>
+  </div>
+  <!-- here is for edit item -->
+  <div class="debug-mode">
+    validate status:{{validate()}}
+  </div>
+  <table class="table">
+    <tr>
+      <th>
+        
+      </th>
+      <th> Item </th>
+      <th> Quantity</th>
+      <th> Unit Price</th>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <button (click)="createOrder()" class="btn btn-success">
+          <span class="glyphicon glyphicon-edit"></span>
+        </button>
+        <!--
+        <button (click)="saveOrder()" class="btn btn-primary">
+          <span class="glyphicon glyphicon-floppy-saved"></span>
+        </button>
+        -->
+        <button (click)="deleteOrder()" class="btn btn-danger">
+          <span class="glyphicon glyphicon-trash"></span>
+        </button>
+      </td>
+    </tr>
+    <tr *ngFor="let order_item of order.items; let i=index">
+      <td>
+        <button (click)="deleteItem(i)" class="btn btn-warning">
+          <span class="glyphicon glyphicon-minus"></span>
+        </button>
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="order_item.item" placeholder="Item" class="form-control" />
+      </td>
+      <td>
+        <input type="number" [(ngModel)]="order_item.quantity" placeholder="Quantity" class="form-control" />
+      </td>
+      <td>
+        <input type="number" [(ngModel)]="order_item.unit_price" placeholder="Unit Price" class="form-control" />
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <button (click)="addItem()" class="btn btn-success">
+          <span class="glyphicon glyphicon-plus"></span>
+        </button>
+        <button (click)="onSave()" class="btn btn-primary">
+          <span class="glyphicon glyphicon-floppy-disk"></span>
+        </button>
+        
+      </td>
+    </tr>
+  </table>
+</div>
+  <!-- end of edit item -->
+

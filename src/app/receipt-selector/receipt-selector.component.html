@@ -1,0 +1,15 @@
+<table class="table">
+  <tr *ngFor="let o of orders">
+    <td>
+      <a routerLink="../receipt/{{o.id}}">{{ o.id }}</a>
+      <a routerLink="../editor/{{o.id}}" class="btn btn-primary">
+        <span class="glyphicon glyphicon-edit"></span>
+        Edit
+      </a>
+    </td>
+    <td>{{ o.getTotal() | currency:"MYR" }}</td>
+  </tr>
+  <tr>
+    <button (click)="loadFromURL()" class="btn btn-primary">Load Data from URL</button>
+  </tr>
+<table>
